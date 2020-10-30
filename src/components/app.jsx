@@ -10,6 +10,7 @@ class App extends Component {
         <div className="max-w-sm mx-auto flex p-6 bg-white rounded-lg shadow-xl">
           <div className="flex-shrink-0">
             <input />
+            test
             {/* <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" /> */}
           </div>
           <div className="ml-6 pt-1">
