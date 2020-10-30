@@ -1,9 +1,11 @@
+const tailwindcss = require("tailwindcss");
 const PurgeCss = require("@fullhuman/postcss-purgecss");
 const PurgeOptions = {
   // Specify the paths to all of the template files in your project
   content: [
     "./src/**/*.html",
     "./src/**/*.jsx",
+    "./src/**/*.js",
     // etc.
   ],
 
@@ -12,5 +14,5 @@ const PurgeOptions = {
 };
 
 module.exports = {
-  plugins: [require("tailwindcss"), PurgeCss(PurgeOptions)],
+  plugins: [tailwindcss("./tailwind.config.js"), PurgeCss(PurgeOptions)],
 };
