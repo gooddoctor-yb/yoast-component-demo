@@ -5,25 +5,21 @@ import React, { Component } from "react";
 export default class Demo extends Component {
   render() {
     return (
-      <div>
-        Demo1133
-        <br />
-        <div>
-          <form>
-            <div>
-              <label>名称</label>
-              <input name="username" />
-            </div>
-            <div>
-              <label>性别</label>
-              <input name="gender" />
-            </div>
-            <div>
-              <label>年龄</label>
-              <input name="age" />
-            </div>
-          </form>
-        </div>
+      <div className="container mx-auto">
+        <form className="space-y-4">  
+          <div>
+            <label>姓名 : </label>
+            <input className="ml-3 border border-purple-600 rounded bg-gray-200" name="username" />
+          </div>
+          <div>
+            <label>性别 : </label>
+            <input className="ml-3 border border-purple-600 rounded bg-gray-200" name="gender" />
+          </div>
+          <div>
+            <label>年龄 : </label>
+            <input className="ml-3 border border-purple-600 rounded bg-gray-200" name="age" />
+          </div>
+        </form>
       </div>
     );
   }

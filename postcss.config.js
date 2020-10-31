@@ -14,5 +14,9 @@ const PurgeOptions = {
 };
 
 module.exports = {
-  plugins: [tailwindcss("./tailwind.config.js"), PurgeCss(PurgeOptions)],
+  plugins: [
+    tailwindcss("./tailwind.config.js"),
+    require("autoprefixer"),
+    // PurgeCss(PurgeOptions)
+  ],
 };
