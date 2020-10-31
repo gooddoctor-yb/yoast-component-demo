@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
-  devtool: "cheap-source-map",
   ...webpackBaseConfig({
     plugins: [
       new HtmlWebpackPlugin({
