@@ -12,11 +12,11 @@ const PurgeOptions = {
   // Include any special characters you're using in this regular expression
   defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 };
-
+console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 module.exports = {
   plugins: [
     tailwindcss("./tailwind.config.js"),
     require("autoprefixer"),
-    // PurgeCss(PurgeOptions)
-  ],
+    process.env.NODE_ENV === "production" ? PurgeCss(PurgeOptions) : null,
+  ].filter(Boolean),
 };
