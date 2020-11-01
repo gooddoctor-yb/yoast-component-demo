@@ -4,9 +4,7 @@ import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 import * as actionCreators from "../actions";
 
-// let finalCreateStore = compose(applyMiddleware(thunk, createLogger()))(createStore);
-
-export default function configureStore(initialState = { todos: [], user: {} }) {
+export default function configureStore(initialState) {
   const enhancer =
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__({ actionCreators, serialize: true, trace: true });
@@ -17,7 +15,8 @@ export default function configureStore(initialState = { todos: [], user: {} }) {
     );
   }
 
-  const store = applyMiddleware(thunk, createLogger())(createStore)(rootReducer, initialState, enhancer);
+  let finalCreateStore = compose(applyMiddleware(thunk, createLogger()))(createStore);
+  // const store = applyMiddleware(thunk, createLogger())(createStore)(rootReducer, initialState, enhancer);
   // store(rootReducer, initialState, enhancer);
 
   if (module.hot) {
@@ -27,7 +26,7 @@ export default function configureStore(initialState = { todos: [], user: {} }) {
     });
   }
 
-  return store;
+  // return store;
 
-  // return finalCreateStore(rootReducer, initialState);
+  return finalCreateStore(rootReducer, initialState, enhancer);
 }
