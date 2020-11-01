@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "NODE_ENV=development && webpack-dev-server --config ./webpack.dev.config.js",
     "serve": "serve dist -p 3001",
-    "server": "node server/index.js",
     "eslint": "eslint --ext .jsx,.js src/",
     "build": "npm run eslint && npm run clean && NODE_ENV=production && NODE_ENV=production webpack --config ./webpack.prod.config.js",
     "clean": "rm -rf dist"
