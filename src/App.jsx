@@ -1,7 +1,7 @@
 // import { hot } from "react-hot-loader/root";
 
 import React, { Component } from "react";
-import TodoComponent from "./components/TodoComponent";
+// import TodoComponent from "./components/TodoComponent";
 
 class App extends Component {
   render() {
