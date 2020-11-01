@@ -4,7 +4,11 @@ import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 import * as actionCreators from "../actions";
 
-export default function configureStore(initialState) {
+// let finalCreateStore = compose(applyMiddleware(thunk, createLogger()))(createStore);
+
+export default function configureStore(initialState = { todos: [], user: {} }) {
+  console.log("configureStore -> process.env.NODE_ENV", process.env.NODE_ENV);
+
   const enhancer =
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__({ actionCreators, serialize: true, trace: true });
@@ -15,18 +19,16 @@ export default function configureStore(initialState) {
     );
   }
 
-  let finalCreateStore = compose(applyMiddleware(thunk, createLogger()))(createStore);
-  // const store = applyMiddleware(thunk, createLogger())(createStore)(rootReducer, initialState, enhancer);
-  // store(rootReducer, initialState, enhancer);
+  let store = applyMiddleware(thunk, createLogger())(createStore)(rootReducer, initialState, enhancer);
+  if (process.env.NODE_ENV === "production") {
+    store = applyMiddleware(thunk)(createStore)(rootReducer, initialState);
+  }
 
   if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
     module.hot.accept("../reducers", () => {
       store.replaceReducer(require("../reducers").default);
     });
   }
 
-  // return store;
-
-  return finalCreateStore(rootReducer, initialState, enhancer);
+  return store;
 }

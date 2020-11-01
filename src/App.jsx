@@ -1,7 +1,7 @@
 // import { hot } from "react-hot-loader/root";
 
 import React, { Component } from "react";
-// import TodoComponent from "./components/TodoComponent";
+import TodoComponent from "./components/TodoComponent";
 
 class App extends Component {
   render() {
@@ -17,7 +17,7 @@ class App extends Component {
             <input className="ml-3 border border-blue-400 rounded px-3 py-2" />
           </div>
         </div>
-        {/* <TodoComponent /> */}
+        <TodoComponent />
       </div>
     );
   }
